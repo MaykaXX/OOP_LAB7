@@ -50,3 +50,46 @@ void SingleList<T>::push_front(T data) {
     size++;
 }
 
+
+
+template<typename T>
+void SingleList<T>::pop_back() {
+    if (head == nullptr) {
+        std::cout << "List is empty!" << std::endl;
+    }
+    SingleNode<T> *current = head;
+
+    if (head->next == nullptr) {
+        delete head;
+        head = nullptr;
+    }
+
+    while (current->next->next != nullptr) {
+        current = current->next;
+    }
+
+    delete current->next;
+    current->next = nullptr;
+
+    size--;
+
+
+}
+
+template<typename T>
+void SingleList<T>::pop_front() {
+    SingleNode<T> * temp = head;
+    head = head->next;
+    delete temp;
+    size--;
+}
+
+template<typename T>
+bool SingleList<T>::is_empty() {
+    if (head == nullptr) {
+        return true;
+    }else {
+        return false;
+    }
+}
+

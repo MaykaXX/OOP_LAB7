@@ -17,6 +17,9 @@ class SingleList {
     int get_size() {return size;};
     void push_back(T data);
     void push_front(T data);
+    void pop_back();
+    void pop_front();
+    bool is_empty();
 
 
 };
