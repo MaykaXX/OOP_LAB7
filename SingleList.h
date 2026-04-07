@@ -20,7 +20,9 @@ class SingleList {
     void pop_back();
     void pop_front();
     bool is_empty();
-
+    T& operator[](const int index);
+    void insert(T data, int index);
+    void printList();
 
 };
 

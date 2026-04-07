@@ -50,7 +50,21 @@ void SingleList<T>::push_front(T data) {
     size++;
 }
 
+template<typename T>
+void SingleList<T>::printList() {
+    if (head == nullptr) {
+        std::cout << "[]" << std::endl;
+    }
+    SingleNode<T> * current = head;
+    std::cout <<"[";
+    while (current->next != nullptr) {
+        std::cout << current->data << ", ";
+        current = current->next;
+    }
+    std::cout << current->data;
+    std::cout << "]" << std::endl;
 
+}
 
 template<typename T>
 void SingleList<T>::pop_back() {
@@ -91,5 +105,36 @@ bool SingleList<T>::is_empty() {
     }else {
         return false;
     }
+}
+
+template<typename T>
+T &SingleList<T>::operator[](const int index) {
+    int counter = 0;
+    SingleNode<T> * current = head;
+    while (current->next != nullptr) {
+        if (counter == index) {
+            return current->data;
+        }
+        current = current->next;
+        counter++;
+    }
+}
+
+template<typename T>
+void SingleList<T>::insert(T data, int index) {
+
+    if (index == 0) {
+        push_front(data);
+    }else {
+        SingleNode<T> * previous = head;
+        for (int i = 0; i < index - 1; i++) {
+            previous = previous->next;
+        }
+        SingleNode<T> * newNode = new SingleNode<T>(data, previous->next);
+        previous->next = newNode;
+    }
+
+
+
 }
 
