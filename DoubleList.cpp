@@ -10,7 +10,7 @@ DoubleList<T>::DoubleList(T data) {
     head = new DoubleNode<T>();
     head->data = data;
     head->next = nullptr;
-    head->prev = nullptr;
+    head->previous = nullptr;
     size++;
 }
 
@@ -36,7 +36,7 @@ void DoubleList<T>::push_back(T data) {
         }
         DoubleNode<T> *new_node = new DoubleNode<T>(data);
         current->next = new_node;
-        new_node->prev = current;
+        new_node->previous = current;
 
     }
     size++;
@@ -50,7 +50,7 @@ void DoubleList<T>::push_front(T data) {
         DoubleNode<T> * current = head;
         head = new DoubleNode<T>(data);
         head->next = current;
-        current->prev = head;
+        current->previous = head;
     }
     size++;
 }
@@ -72,11 +72,24 @@ void DoubleList<T>::pop_back() {
         current = current->next;
     }
 
-    DoubleNode<T> * previous = current->prev;
+    DoubleNode<T> * previous = current->previous;
     previous->next = nullptr;
     delete current;
 
     size--;
 }
 
-
+template<typename T>
+void DoubleList<T>::printList() {
+    if (head == nullptr) {
+        std::cout << "[]" << std::endl;
+    }
+    DoubleNode<T> * current = head;
+    std::cout <<"[";
+    while (current->next != nullptr) {
+        std::cout << current->data << ", ";
+        current = current->next;
+    }
+    std::cout << current->data;
+    std::cout << "]" << std::endl;
+}
