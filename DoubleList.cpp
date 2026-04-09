@@ -156,3 +156,28 @@ void DoubleList<T>::insert(T data, int index) {
         previous_node->next = newNode;
     }
 }
+
+template<typename T>
+void DoubleList<T>::remove(int index) {
+    if (index == 0) {
+        pop_front();
+        return;
+    }
+    else {
+        DoubleNode<T> * current = head;
+
+        for (int i = 0; i < index; i++) {
+            current = current->next;
+        }
+
+        DoubleNode<T> * previous_element = current->previous;
+        current->previous->next = current->next;
+        if (current->next != nullptr) {
+            current->next->previous = current->previous;
+        }
+        delete current;
+        size--;
+    }
+}
+
+
