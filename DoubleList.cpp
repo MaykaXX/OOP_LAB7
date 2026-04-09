@@ -154,6 +154,8 @@ void DoubleList<T>::insert(T data, int index) {
         }
 
         previous_node->next = newNode;
+
+        size++;
     }
 }
 
@@ -180,4 +182,18 @@ void DoubleList<T>::remove(int index) {
     }
 }
 
+template<typename T>
+int DoubleList<T>::find(T data) {
+        int counter = 0;
+        DoubleNode<T> * current = head;
+        while (current != nullptr) {
+            if (current->data == data) {
+                return counter;
+            }
 
+            current = current->next;
+            counter++;
+        }
+
+        return -1;
+}

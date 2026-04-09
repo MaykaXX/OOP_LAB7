@@ -5,6 +5,8 @@
 
 
 void Double_list() {
+    std::cout<<termcolor::bright_yellow << "Double list"<<termcolor::reset << std::endl;
+
     DoubleList<int> double_list(2);
     // double_list.push_front(10);
     // double_list.push_back(20);
@@ -20,10 +22,12 @@ void Double_list() {
     double_list.remove(0);
     double_list.printList();
 
+    std::cout << double_list.find(2345) <<std::endl;
+
 };
 
 void Single_list () {
-    SingleList<int> single_list(5);
+std::cout<<termcolor::bright_yellow << "Single list"<<termcolor::reset << std::endl;    SingleList<int> single_list(5);
     single_list.push_back(10);
     single_list.push_front(20);
     single_list.push_front(30);
@@ -63,8 +67,10 @@ int main() {
         switch (choice) {
             case 1:
                 Single_list();
+                break;
             case 2:
                 Double_list();
+                break;
         }
     }
     return 0;

@@ -12,7 +12,7 @@ SingleList<T>::SingleList(T data) {
 
 template<typename T>
 SingleList<T>::~SingleList() {
-    while (head->next != nullptr) {
+    while (head != nullptr) {
         SingleNode<T> * current = head->next;
         delete head;
         head = current;
@@ -133,6 +133,7 @@ void SingleList<T>::insert(T data, int index) {
         }
         SingleNode<T> * newNode = new SingleNode<T>(data, previous->next);
         previous->next = newNode;
+        size++;
     }
 }
 
@@ -152,6 +153,7 @@ void SingleList<T>::remove(int index) {
         delete previous->next;
         previous->next = next_element;
 
+        size--;
     }
 }
 
