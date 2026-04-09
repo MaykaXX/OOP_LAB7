@@ -124,7 +124,6 @@ T &SingleList<T>::operator[](const int index) {
 
 template<typename T>
 void SingleList<T>::insert(T data, int index) {
-
     if (index == 0) {
         push_front(data);
     }else {

@@ -119,3 +119,40 @@ bool DoubleList<T>::is_empty() {
         return false;
     }
 }
+
+template<typename T>
+T &DoubleList<T>::operator[](const int index) {
+    int counter = 0;
+    DoubleNode<T> * current = head;
+    while (current->next != nullptr) {
+        if (counter == index) {
+            return current->data;
+        }
+        current = current->next;
+        counter++;
+    }
+
+    return head->data;
+}
+
+template<typename T>
+void DoubleList<T>::insert(T data, int index) {
+    if (index == 0) {
+        push_front(data);
+    }else {
+        DoubleNode<T> * previous_node = head;
+        for (int i = 0; i < index - 1; i++) {
+            previous_node = previous_node->next;
+        }
+        DoubleNode<T> * newNode = new DoubleNode<T>(data);
+
+        newNode->next = previous_node->next;
+        newNode->previous = previous_node;
+
+        if (previous_node->next != nullptr) {
+            previous_node->next->previous = newNode;
+        }
+
+        previous_node->next = newNode;
+    }
+}

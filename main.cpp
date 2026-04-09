@@ -14,6 +14,9 @@ void Double_list() {
     double_list.printList();
     std::cout << double_list.is_empty() << std::endl;
 
+    double_list.insert(1234, 0);
+    double_list.printList();
+
 };
 
 void Single_list () {
