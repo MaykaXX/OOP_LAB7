@@ -3,7 +3,7 @@
 #include "SingleList.h"
 
 template<typename T>
-SingleList<T>::SingleList(int data) {
+SingleList<T>::SingleList(T data) {
     head = new SingleNode<T>();
     head->data = data;
     head->next = nullptr;
@@ -76,6 +76,7 @@ void SingleList<T>::pop_back() {
     if (head->next == nullptr) {
         delete head;
         head = nullptr;
+        size--;
     }
 
     while (current->next->next != nullptr) {

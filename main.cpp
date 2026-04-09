@@ -1,8 +1,13 @@
 #include <iostream>
+
+#include "DoubleList.h"
 #include "../termcolor/termcolor.hpp"
 #include "SingleList.cpp"
 
-void Double_list(){};
+void Double_list() {
+    DoubleList<int> double_list(2);
+
+};
 
 void Single_list () {
     SingleList<int> single_list(5);

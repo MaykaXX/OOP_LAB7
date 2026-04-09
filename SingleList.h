@@ -12,7 +12,7 @@ class SingleList {
     int size = 0;
 
     public:
-    SingleList(int data);
+    SingleList(T data);
     ~SingleList();
     int get_size() {return size;};
     void push_back(T data);
