@@ -22,6 +22,8 @@ class SingleList {
     bool is_empty();
     T& operator[](const int index);
     void insert(T data, int index);
+    void remove(int index);
+    T find(T data);
     void printList();
 
 };

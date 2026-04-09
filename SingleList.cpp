@@ -133,8 +133,24 @@ void SingleList<T>::insert(T data, int index) {
         SingleNode<T> * newNode = new SingleNode<T>(data, previous->next);
         previous->next = newNode;
     }
+}
 
+template<typename T>
+void SingleList<T>::remove(int index) {
+    if (index == 0) {
+        pop_front();
+    }
+    else {
+        SingleNode<T> * previous = head;
 
+        for (int i = 0; i < index - 1; i++) {
+            previous = previous->next;
+        }
 
+        SingleNode<T> * next_element = previous->next->next;
+        delete previous->next;
+        previous->next = next_element;
+
+    }
 }
 
