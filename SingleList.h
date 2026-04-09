@@ -8,7 +8,7 @@
 
 template<typename T>
 class SingleList {
-    SingleNode<T> * head = nullptr;
+    std::shared_ptr<SingleNode<T>> head = nullptr;
     int size = 0;
 
     public:

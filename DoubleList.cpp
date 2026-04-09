@@ -98,7 +98,9 @@ void DoubleList<T>::printList() {
 
 template<typename T>
 void DoubleList<T>::pop_front() {
-    if (head == nullptr) return;
+    if (head == nullptr) {
+        throw "Error: List is empty!";
+    }
 
     DoubleNode<T> * tmp = head;
     head = head->next;
@@ -122,6 +124,10 @@ bool DoubleList<T>::is_empty() {
 
 template<typename T>
 T &DoubleList<T>::operator[](const int index) {
+    if (index < 0 || index >= size) {
+        throw "Error: Index out of bounds!";
+    }
+
     int counter = 0;
     DoubleNode<T> * current = head;
     while (current->next != nullptr) {
@@ -154,8 +160,6 @@ void DoubleList<T>::insert(T data, int index) {
         }
 
         previous_node->next = newNode;
-
-        size++;
     }
 }
 
@@ -186,7 +190,7 @@ template<typename T>
 int DoubleList<T>::find(T data) {
         int counter = 0;
         DoubleNode<T> * current = head;
-        while (current != nullptr) {
+        while (current->next != nullptr) {
             if (current->data == data) {
                 return counter;
             }
