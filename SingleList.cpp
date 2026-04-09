@@ -154,3 +154,19 @@ void SingleList<T>::remove(int index) {
     }
 }
 
+template<typename T>
+int SingleList<T>::find(T data) {
+    int counter = 0;
+    SingleNode<T> * current = head;
+    while (current->next != nullptr) {
+        if (current->data == data) {
+            return counter;
+        }
+
+        current = current->next;
+        counter++;
+    }
+
+    return -1;
+}
+
