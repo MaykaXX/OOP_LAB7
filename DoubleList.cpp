@@ -16,7 +16,7 @@ DoubleList<T>::DoubleList(T data) {
 
 template<typename T>
 DoubleList<T>::~DoubleList() {
-    while (head->next != nullptr) {
+    while (head != nullptr) {
         DoubleNode<T> * current = head->next;
         delete head;
         head = current;
@@ -66,6 +66,7 @@ void DoubleList<T>::pop_back() {
         delete head;
         head = nullptr;
         size--;
+        return;
     }
 
     while (current->next != nullptr) {
@@ -83,6 +84,7 @@ template<typename T>
 void DoubleList<T>::printList() {
     if (head == nullptr) {
         std::cout << "[]" << std::endl;
+        return;
     }
     DoubleNode<T> * current = head;
     std::cout <<"[";
@@ -92,4 +94,28 @@ void DoubleList<T>::printList() {
     }
     std::cout << current->data;
     std::cout << "]" << std::endl;
+}
+
+template<typename T>
+void DoubleList<T>::pop_front() {
+    if (head == nullptr) return;
+
+    DoubleNode<T> * tmp = head;
+    head = head->next;
+
+    if (head!=nullptr) {
+        head->previous = nullptr;
+    }
+
+    delete tmp;
+    size--;
+}
+
+template<typename T>
+bool DoubleList<T>::is_empty() {
+    if (head == nullptr) {
+        return true;
+    }else {
+        return false;
+    }
 }

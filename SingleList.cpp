@@ -77,6 +77,7 @@ void SingleList<T>::pop_back() {
         delete head;
         head = nullptr;
         size--;
+        return;
     }
 
     while (current->next->next != nullptr) {

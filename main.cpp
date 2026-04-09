@@ -6,12 +6,13 @@
 
 void Double_list() {
     DoubleList<int> double_list(2);
-    double_list.push_front(10);
-    double_list.push_back(20);
-    double_list.push_front(30);
+    // double_list.push_front(10);
+    // double_list.push_back(20);
+    // double_list.push_front(30);
     double_list.printList();
     double_list.pop_back();
     double_list.printList();
+    std::cout << double_list.is_empty() << std::endl;
 
 };
 
